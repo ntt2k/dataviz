@@ -132,8 +132,27 @@
                     tabulate(data, columns)
                 })
 
-                $('#table_id').ready(function () {
-                    $('#table_id').DataTable();
+                // $('#table_id').ready(function () {
+                //     $('#table_id').DataTable();
+                // });
+
+                $(function () {
+                    $("#mainContent").bind("change", function () {
+                        // $.ajax({
+                        //     type: "GET",
+                        //     url: "getData.php",
+                        //     "dataSrc": "tableData",
+                        //     success: function (html) {
+                        //         $("#tableContainer").html(html);
+                        //         $('#mytable').DataTable({
+                        //             "destroy": true, //use for reinitialize datatable
+                        //         });
+                        //     }
+                        // });
+
+                        $('#table_id').DataTable();
+                    });
+
                 });
             </script>
 
