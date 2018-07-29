@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home - Data Visualization</title>
+
+    <!-- D3 v4 -->
+    <script src="https://d3js.org/d3.v4.js"></script>
+
+    <!-- Bootstrap CSS v4 and jQuery v3 -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Bulma CSS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+
+</head>
+
+<body>
+    <div class="columns is-desktop">
+        <div class="column is-10 is-offset-1">
+
+            <!-- NAVIGATION MENU -->
+            <nav class="navbar is-white navbarBorder">
+                <div class="navbar-brand">
+                    <a class="navbar-item" href="http://d3js.org">
+                        <img src="src/d3.png" alt="D3 logo" width="80px" height="100px">
+                    </a>
+                </div>
+                <div id="navMenu" class="navbar-menu">
+                    <div class="navbar-start">
+                        <a class="navbar-item has-text-white has-background-info" href="#">
+                            Home
+                        </a>
+                        <a class="navbar-item" href="#">
+                            Scene2
+                        </a>
+                        <a class="navbar-item" href="#">
+                            Scene3
+                        </a>
+                        <a class="navbar-item" href="#">
+                            Final
+                        </a>
+                    </div>
+                    <div class="navbar-end">
+                        <div class="navbar-item">
+                            <div class="field is-grouped">
+                                <p class="control">
+                                    <a class="button is-info" href="https://github.com/ntt2k/dataviz" target="_blank">
+                                        <span class="icon">
+                                            <i class="fas fa-code"></i>
+                                        </span>
+                                        <span>Source Code</span>
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- MAIN SECTION -->
+            <section class="section">
+                <div class="container">
+                    <div class="content" id="mainContent">
+                        <h1>Hello World</h1>
+                        <p>Lorem ipsum
+                            <sup>
+                                <a>[1]</a>
+                            </sup> dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices eleifend gravida,
+                            nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat
+                            odio, sollicitudin vel erat vel, interdum mattis neque. Sub
+                            <sub>script</sub> works as well!</p>
+                        <h2>Second level</h2>
+                        <p>Curabitur accumsan turpis pharetra
+                            <strong>augue tincidunt</strong> blandit. Quisque condimentum maximus mi, sit amet commodo arcu rutrum
+                            id. Proin pretium urna vel cursus venenatis. Suspendisse potenti. Etiam mattis sem rhoncus lacus
+                            dapibus facilisis. Donec at dignissim dui. Ut et neque nisl.</p>
+                        <ul>
+                            <li>In fermentum leo eu lectus mollis, quis dictum mi aliquet.</li>
+                            <li>Morbi eu nulla lobortis, lobortis est in, fringilla felis.</li>
+                            <li>Aliquam nec felis in sapien venenatis viverra fermentum nec lectus.</li>
+                            <li>Ut non enim metus.</li>
+                        </ul>
+                        <p class="has-text-grey">(Please wait few seconds for D3 to load data ...)</p>
+                    </div>
+                </div>
+            </section>
+
+            <script type="text/javascript" charset="utf-8">
+                var tabulate = function (data, columns) {
+                    var table = d3.select('#mainContent').append('table').attr('id', 'table_id')
+                    var thead = table.append('thead')
+                    var tbody = table.append('tbody')
+
+                    thead.append('tr')
+                        .selectAll('th')
+                        .data(columns)
+                        .enter()
+                        .append('th')
+                        .text(function (d) { return d })
+
+                    var rows = tbody.selectAll('tr')
+                        .data(data)
+                        .enter()
+                        .append('tr')
+
+                    var cells = rows.selectAll('td')
+                        .data(function (row) {
+                            return columns.map(function (column) {
+                                return { column: column, value: row[column] }
+                            })
+                        })
+                        .enter()
+                        .append('td')
+                        .text(function (d) { return d.value })
+
+                    return table;
+                }
+
+                d3.csv('/data/all_data.csv', function (data) {
+                    var columns = ['Country', 'Region', 'Year', 'Emissions Per Capita', 'Emissions']
+                    tabulate(data, columns)
+                })
+
+                $(document).ready(function () {
+                    $('#table_id').DataTable({
+                        deferRender: true
+                    });
+                });
+            </script>
+
+            <!-- ABOUT SECTION - NOTES TO GRADER -->
+            <a class="button is-primary is-rounded" onclick="showAbout()">About the Visualization - Homepage</a>
+            <div style="padding-top: 30px; display: none" id="About">
+                <div class="notification">
+                    <button class="delete" onclick="showAbout()"></button>
+                    <div class="content">
+                        <h5>Hello World</h5>
+                        <p>Lorem ipsum
+                            <sup>
+                                <a>[1]</a>
+                            </sup> dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices eleifend gravida,
+                            nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat
+                            odio, sollicitudin vel erat vel, interdum mattis neque. Sub
+                            <sub>script</sub> works as well!</p>
+                        <h5>Second level</h5>
+                        <p>Curabitur accumsan turpis pharetra
+                            <strong>augue tincidunt</strong> blandit. Quisque condimentum maximus mi, sit amet commodo arcu rutrum
+                            id. Proin pretium urna vel cursus venenatis. Suspendisse potenti. Etiam mattis sem rhoncus lacus
+                            dapibus facilisis. Donec at dignissim dui. Ut et neque nisl.</p>
+                        <ul>
+                            <li>In fermentum leo eu lectus mollis, quis dictum mi aliquet.</li>
+                            <li>Morbi eu nulla lobortis, lobortis est in, fringilla felis.</li>
+                            <li>Aliquam nec felis in sapien venenatis viverra fermentum nec lectus.</li>
+                            <li>Ut non enim metus.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                function showAbout() {
+                    var x = document.getElementById("About");
+                    if (x.style.display === "none") {
+                        x.style.display = "block";
+                    } else {
+                        x.style.display = "none";
+                    }
+                }
+            </script>
+
+            <!-- FOOTER BUTTONS NAVIGATION -->
+            <div style="padding-top: 40px">
+                <a class="button is-info is-outlined" style="float: left;">
+                    Home &nbsp;
+                    <span class="icon">
+                        <i class="fas fa-arrow-circle-left"></i>
+                    </span>
+                </a>
+                <a class="button is-info is-outlined" style="float: right;">
+                    Scene2 &nbsp;
+                    <span class="icon">
+                        <i class="fas fa-arrow-circle-right"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
