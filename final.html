@@ -9,15 +9,6 @@
     <!-- D3 v4 -->
     <script src="https://d3js.org/d3.v4.js"></script>
 
-    <!-- Bootstrap CSS v4 and jQuery v3 -->
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css"
-    />
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css" />
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
-
     <!-- Bulma CSS -->
     <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
@@ -38,7 +29,7 @@
                 </div>
                 <div id="navMenu" class="navbar-menu">
                     <div class="navbar-start">
-                        <a class="navbar-item has-text-white has-background-info" href="#">
+                        <a class="navbar-item" href="/index.html">
                             Home
                         </a>
                         <a class="navbar-item" href="/scene2.html">
@@ -47,7 +38,7 @@
                         <a class="navbar-item" href="/scene3.html">
                             Scene3
                         </a>
-                        <a class="navbar-item" href="/final.html">
+                        <a class="navbar-item has-text-white has-background-info" href="#">
                             Final
                         </a>
                     </div>
@@ -72,7 +63,7 @@
             <section class="section">
                 <div class="container">
                     <div class="content" id="mainContent">
-                        <h1>Hello World</h1>
+                        <h1>Final</h1>
                         <p>Lorem ipsum
                             <sup>
                                 <a>[1]</a>
@@ -91,44 +82,13 @@
                             <li>Aliquam nec felis in sapien venenatis viverra fermentum nec lectus.</li>
                             <li>Ut non enim metus.</li>
                         </ul>
-                        <p class="has-text-grey">(Please wait few seconds for D3.js to load data ...)</p>
+                        
 
-                        <table id="table_id">
-                            <thead>
-                                <tr>
-                                    <th>Country</th>
-                                    <th>Region</th>
-                                    <th>Year/th>
-                                        <th>Emissions Per Capita</th>
-                                        <th>Emissions</th>
-                                </tr>
-                            </thead>
-                        </table>
                     </div>
                 </div>
             </section>
 
-            <script type="text/javascript" charset="utf-8">
-                $(document).ready(function () {
-                    let data = [];
-                    d3.csv('/data/all_data.csv', d => {
-                        d.forEach(i => data.push([
-                            i['Country'],
-                            i['Region'],
-                            i['Year'],
-                            i['Emissions Per Capita'],
-                            i['Emissions']
-                        ])
-                        )
-                        // console.log(data);
-                        var oTable = $('#table_id').dataTable({
-                            data: data,
-                            deferRender: true,
-                            iDisplayLength: 25
-                        });
-                    })
-                });
-            </script>
+
 
             <!-- ABOUT SECTION - NOTES TO GRADER -->
             <a class="button is-primary is-rounded" onclick="showAbout()">About the Visualization - Homepage</a>
@@ -172,11 +132,17 @@
 
             <!-- FOOTER BUTTONS NAVIGATION -->
             <div style="padding-top: 40px">
-                <a class="button is-info is-outlined" style="float: right;" href="/scene2.html">
-                    Scene 2 &nbsp;
+                <a class="button is-info is-outlined" style="float: left;" href="/scene3.html">
                     <span class="icon">
-                        <i class="fas fa-arrow-circle-right"></i>
+                        <i class="fas fa-arrow-circle-left"></i>
                     </span>
+                    &nbsp; Scene 3
+                </a>
+                <a class="button is-info is-outlined" style="float: right;" href="/index.html">
+                    <span class="icon">
+                        <i class="fas fa-home"></i>
+                    </span>
+                    &nbsp; Home
                 </a>
             </div>
         </div>
