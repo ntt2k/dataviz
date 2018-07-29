@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/slider.css">
 </head>
 
 <body>
@@ -83,14 +84,32 @@
                             <li>Ut non enim metus.</li>
                         </ul>
 
+                        <p class="has-text-grey">(Please wait few seconds for D3.js to load data ...)</p>
+
+                        <section class="container">
+                            <div class="chart-container">
+                                <svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg" id="map">
+                                </svg>
+                            </div>
+                            <div class="chart-container right">
+                                <svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg" id="pie">
+                                </svg>
+                                <svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg" id="bar">
+                                </svg>
+                            </div>
+                        </section>
                         <div id="nav">
-                            <h2>CO
-                                <sub>2</sub> Dashboard</h2>
+                            <h3>CO
+                                <sub>2</sub> Dashboard</h3>
                             <p>
-                                Explore CO
-                                <sub>2</sub> emissions by year. Current year:
-                                <span id="year-val"></span>
-                                <input id="year" type="range" step="1">
+                                <p>Click on a country to see its trends by year.</p>
+                                <div>
+                                    Current year:
+                                    <a class="button is-danger is-inverted is-rounded">
+                                        <span id="year-val"></span>
+                                    </a>
+                                    <input type="range" step="1" id="year" style="margin-left: 10px">
+                                </div>
                             </p>
                             <p>
                                 Choose between total emissions or emissions per capita.
@@ -99,33 +118,8 @@
                                 <input type="radio" name="data-type" value="emissionsPerCapita">
                                 <label>Emissions Per Capita</label>
                             </p>
-                            <p>Click on a country to see its trends by year.</p>
-                        </div>
 
-                        <section class="container">
-                            <div class="chart-container">
-                            <svg
-                              version="1.1"
-                              baseProfile="full"
-                              xmlns="http://www.w3.org/2000/svg"
-                              id="map">
-                            </svg>
-                          </div>
-                          <div class="chart-container right">
-                            <svg
-                              version="1.1"
-                              baseProfile="full"
-                              xmlns="http://www.w3.org/2000/svg"
-                              id="pie">
-                            </svg>
-                            <svg
-                              version="1.1"
-                              baseProfile="full"
-                              xmlns="http://www.w3.org/2000/svg"
-                              id="bar">
-                            </svg>
-                          </div>
-                        </section>
+                        </div>
 
                         <div class="tooltip"></div>
 
