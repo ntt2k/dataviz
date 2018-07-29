@@ -91,7 +91,7 @@
                             <li>Aliquam nec felis in sapien venenatis viverra fermentum nec lectus.</li>
                             <li>Ut non enim metus.</li>
                         </ul>
-                        <p class="has-text-grey">(Please wait few seconds for D3 to load data ...)</p>
+                        <p class="has-text-grey">(Please wait few seconds for D3.js to load data ...)</p>
 
                         <table id="table_id">
                             <thead>
@@ -99,8 +99,8 @@
                                     <th>Country</th>
                                     <th>Region</th>
                                     <th>Year/th>
-                                    <th>Emissions Per Capita</th>
-                                    <th>Emissions</th>
+                                        <th>Emissions Per Capita</th>
+                                        <th>Emissions</th>
                                 </tr>
                             </thead>
                         </table>
@@ -109,68 +109,22 @@
             </section>
 
             <script type="text/javascript" charset="utf-8">
-
-                // var tabulate = function (data, columns) {
-                //     var table = d3.select('#mainContent').append('table').attr('id', 'table_id')
-                //     var thead = table.append('thead')
-                //     var tbody = table.append('tbody')
-
-                //     thead.append('tr')
-                //         .selectAll('th')
-                //         .data(columns)
-                //         .enter()
-                //         .append('th')
-                //         .text(function (d) { return d })
-
-                //     var rows = tbody.selectAll('tr')
-                //         .data(data)
-                //         .enter()
-                //         .append('tr')
-
-                //     var cells = rows.selectAll('td')
-                //         .data(function (row) {
-                //             return columns.map(function (column) {
-                //                 return { column: column, value: row[column] }
-                //             })
-                //         })
-                //         .enter()
-                //         .append('td')
-                //         .text(function (d) { return d.value })
-
-                //     return table;
-                // }
-
-                // d3.csv('/data/all_data.csv', function (data) {
-                //     var columns = ['Country', 'Region', 'Year', 'Emissions Per Capita', 'Emissions']
-                //     tabulate(data, columns)
-                // })
-
-                // $(document).ready(function () {
-                //     $('#table_id').DataTable();
-                // });
-
-                // $("#mainContent").on("DOMSubtreeModified", function () {
-                //     $('#table_id').DataTable();
-                // });
-
                 $(document).ready(function () {
                     let data = [];
                     d3.csv('/data/all_data.csv', d => {
-                        d.forEach(i => {
-                            // console.log(i['Country'])
-
-                            data.push([
-                                i['Country'],
-                                i['Region'],
-                                i['Year'],
-                                i['Emissions Per Capita'],
-                                i['Emissions']
-                            ])
-                        })
+                        d.forEach(i => data.push([
+                            i['Country'],
+                            i['Region'],
+                            i['Year'],
+                            i['Emissions Per Capita'],
+                            i['Emissions']
+                        ])
+                        )
                         // console.log(data);
                         var oTable = $('#table_id').dataTable({
                             data: data,
-                            deferRender: true
+                            deferRender: true,
+                            iDisplayLength: 25
                         });
                     })
                 });
