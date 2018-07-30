@@ -119,30 +119,43 @@
 
 
             <!-- ABOUT SECTION - NOTES TO GRADER -->
-            <a class="button is-primary is-rounded" onclick="showAbout()">About the Visualization - Homepage</a>
+            <a class="button is-primary is-rounded" onclick="showAbout()">About the Visualization</a>
             <div style="padding-top: 30px; display: none" id="About">
                 <div class="notification">
                     <button class="delete" onclick="showAbout()"></button>
                     <div class="content">
-                        <h5>Homepage</h5>
-                        <p>Lorem ipsum
-                            <sup>
-                                <a>[1]</a>
-                            </sup> dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus ultrices eleifend gravida,
-                            nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat
-                            odio, sollicitudin vel erat vel, interdum mattis neque. Sub
-                            <sub>script</sub> works as well!</p>
-                        <h5>Second level</h5>
-                        <p>Curabitur accumsan turpis pharetra
-                            <strong>augue tincidunt</strong> blandit. Quisque condimentum maximus mi, sit amet commodo arcu rutrum
-                            id. Proin pretium urna vel cursus venenatis. Suspendisse potenti. Etiam mattis sem rhoncus lacus
-                            dapibus facilisis. Donec at dignissim dui. Ut et neque nisl.</p>
+                        <h5>Visualization Narrative</h5>
+                        <p>The narrative visualization correctly follows the hybrid structure stated in the essay. The user is being exposed to the author driven content:</p>
+
                         <ul>
-                            <li>In fermentum leo eu lectus mollis, quis dictum mi aliquet.</li>
-                            <li>Morbi eu nulla lobortis, lobortis est in, fringilla felis.</li>
-                            <li>Aliquam nec felis in sapien venenatis viverra fermentum nec lectus.</li>
-                            <li>Ut non enim metus.</li>
+                            <li>Homepage: Data table exploring, sorting, order and compare using D3.js to prepare data</li>
+                            <li>Scene 2: Time serie chart visualization</li>
+                            <li>Scene 3: Another data table exploring, sorting, order and compare using D3.js to prepare data</li>
+                            <li>Final: Scatterplot circle data and time serie visualization</li>
                         </ul>
+
+                        <h5>User Interface Events</h5>
+                        <p>User interacts by clicking on the button (Play) or slider button input (Time serie). The hover event allows proper positioning of the tooltip. As mouse moves over the map, the correct info shall be display for that country.</p>
+
+                        <h5>Annotations</h5>
+                        <p>The annotation is represented by the legend on the top-right of the chart and a tooltip when mouse is hovered over different country map or bars in the chart.</p>
+
+                        <h5>Triggers</h5>
+                        <p>The x and y position is also used as a trigger to change outline of the selected country in the map. The label of previously selected country is removed and label of newly selected country is displayed.</p>
+
+                        <h5>Parameters</h5>
+                        <p>The geopath data is read from CSV and loaded as a json object and used by d3 to render maps.
+
+                           <p>Libraries used:</p>
+                           <ul>
+                            <li>D3.js</li>
+                            <li>jQuery v3</li>
+                            <li>Boostrap CSS</li>
+                            <li>Bulma CSS</li>
+                            <li>Font awsome icons</li>
+                        </ul>
+                        </p>
+
                     </div>
                 </div>
             </div>
