@@ -9,19 +9,12 @@
     <!-- D3 v4 -->
     <script src="https://d3js.org/d3.v4.js"></script>
 
-    <!-- Bootstrap CSS v4 and jQuery v3 -->
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css"
-    />
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css" />
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
-
     <!-- Bulma CSS -->
     <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
     <link rel="stylesheet" type="text/css" href="css/nav.css">
-
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/slider.css">
 </head>
 
 <body>
@@ -37,10 +30,10 @@
                 </div>
                 <div id="navMenu" class="navbar-menu">
                     <div class="navbar-start">
-                        <a class="navbar-item has-text-white has-background-info" href="#">
+                        <a class="navbar-item" href="/index.html">
                             Home
                         </a>
-                        <a class="navbar-item" href="/scene2.html">
+                        <a class="navbar-item has-text-white has-background-info" href="#">
                             Scene2
                         </a>
                         <a class="navbar-item" href="/scene3.html">
@@ -67,12 +60,11 @@
                 </div>
             </nav>
 
-
             <!-- MAIN SECTION -->
             <section class="section">
                 <div class="container">
                     <div class="content" id="mainContent">
-                        <h1>Homepage</h1>
+                        <h1>Scene 2</h1>
                         <p>Lorem ipsum
                             <sup>
                                 <a>[1]</a>
@@ -91,44 +83,54 @@
                             <li>Aliquam nec felis in sapien venenatis viverra fermentum nec lectus.</li>
                             <li>Ut non enim metus.</li>
                         </ul>
+
                         <p class="has-text-grey">(Please wait few seconds for D3.js to load data ...)</p>
 
-                        <table id="table_id">
-                            <thead>
-                                <tr>
-                                    <th>Country</th>
-                                    <th>Region</th>
-                                    <th>Year/th>
-                                        <th>Emissions Per Capita</th>
-                                        <th>Emissions</th>
-                                </tr>
-                            </thead>
-                        </table>
+                        <section class="container">
+                            <div class="chart-container">
+                                <svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg" id="map">
+                                </svg>
+                            </div>
+                            <div class="chart-container right">
+                                <svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg" id="pie">
+                                </svg>
+                                <svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg" id="bar">
+                                </svg>
+                            </div>
+                        </section>
+                        <div id="nav">
+                            <h3>CO
+                                <sub>2</sub> Dashboard</h3>
+                            <p>
+                                <p>Click on a country to see its trends by year.</p>
+                                <div>
+                                    Current year:
+                                    <a class="button is-danger is-inverted is-rounded">
+                                        <span id="year-val"></span>
+                                    </a>
+                                    <input type="range" step="1" id="year" style="margin-left: 10px">
+                                </div>
+                            </p>
+                            <p>
+                                Choose between total emissions or emissions per capita.
+                                <input type="radio" name="data-type" value="emissions" checked>
+                                <label>Emissions</label>
+                                <input type="radio" name="data-type" value="emissionsPerCapita">
+                                <label>Emissions Per Capita</label>
+                            </p>
+
+                        </div>
+
+                        <div class="tooltip"></div>
+
                     </div>
                 </div>
             </section>
-            <script type="text/javascript" charset="utf-8">
-                $(document).ready(function () {
-                    let emission_data = [];
-                    d3.csv('/data/emissions.csv', d => {
-                        d.forEach(i => emission_data.push([
-                            i['Country'],
-                            i['Region'],
-                            i['Year'],
-                            i['Emissions Per Capita'],
-                            i['Emissions']
-                        ])
-                        )
-                        // console.log(data);
-                        var oTable = $('#table_id').dataTable({
-                            data: emission_data,
-                            deferRender: true,
-                            iDisplayLength: 25
-                        });
-                    });
-
-                });
-            </script>
+            <script src="./js/scene2/map.js"></script>
+            <script src="./js/scene2/pie.js"></script>
+            <script src="./js/scene2/bar.js"></script>
+            <script src="./js/scene2/app.js"></script>
+            <script src="./js/scene2/app.js"></script>
 
 
             <!-- ABOUT SECTION - NOTES TO GRADER -->
@@ -170,11 +172,16 @@
                 }
             </script>
 
-
             <!-- FOOTER BUTTONS NAVIGATION -->
             <div style="padding-top: 40px">
-                <a class="button is-info is-outlined" style="float: right;" href="/scene2.html">
-                    Scene 2 &nbsp;
+                <a class="button is-info is-outlined" style="float: left;" href="/index.html">
+                    <span class="icon">
+                        <i class="fas fa-arrow-circle-left"></i>
+                    </span>
+                    &nbsp; Home
+                </a>
+                <a class="button is-info is-outlined" style="float: right;" href="/scene3.html">
+                    Scene 3 &nbsp;
                     <span class="icon">
                         <i class="fas fa-arrow-circle-right"></i>
                     </span>

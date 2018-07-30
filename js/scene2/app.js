@@ -1,6 +1,6 @@
 d3.queue()
   .defer(d3.json, './data/world_map.json')
-  .defer(d3.csv, './data/all_data.csv', row => {
+  .defer(d3.csv, './data/emissions.csv', row => {
     return {
       continent: row.Continent,
       country: row.Country,

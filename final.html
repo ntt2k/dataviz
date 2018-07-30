@@ -7,14 +7,17 @@
     <title>Home - Data Visualization</title>
 
     <!-- D3 v4 -->
-    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+
+    <!-- Bootstrap CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- Bulma CSS -->
     <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
-    <link rel="stylesheet" type="text/css" href="css/index.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/slider.css">
+    <link rel="stylesheet" type="text/css" href="css/nav.css">
+    <link rel="stylesheet" type="text/css" href="css/gdb.css">
+
 </head>
 
 <body>
@@ -60,6 +63,7 @@
                 </div>
             </nav>
 
+
             <!-- MAIN SECTION -->
             <section class="section">
                 <div class="container">
@@ -72,64 +76,14 @@
                             nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate semper dui. Fusce erat
                             odio, sollicitudin vel erat vel, interdum mattis neque. Sub
                             <sub>script</sub> works as well!</p>
-                        <h2>Second level</h2>
-                        <p>Curabitur accumsan turpis pharetra
-                            <strong>augue tincidunt</strong> blandit. Quisque condimentum maximus mi, sit amet commodo arcu rutrum
-                            id. Proin pretium urna vel cursus venenatis. Suspendisse potenti. Etiam mattis sem rhoncus lacus
-                            dapibus facilisis. Donec at dignissim dui. Ut et neque nisl.</p>
-                        <ul>
-                            <li>In fermentum leo eu lectus mollis, quis dictum mi aliquet.</li>
-                            <li>Morbi eu nulla lobortis, lobortis est in, fringilla felis.</li>
-                            <li>Aliquam nec felis in sapien venenatis viverra fermentum nec lectus.</li>
-                            <li>Ut non enim metus.</li>
-                        </ul>
 
                         <p class="has-text-grey">(Please wait few seconds for D3.js to load data ...)</p>
 
-                        <section class="container">
-                            <div class="chart-container">
-                                <svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg" id="map">
-                                </svg>
-                            </div>
-                            <div class="chart-container right">
-                                <svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg" id="pie">
-                                </svg>
-                                <svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg" id="bar">
-                                </svg>
-                            </div>
-                        </section>
-                        <div id="nav">
-                            <h3>CO
-                                <sub>2</sub> Dashboard</h3>
-                            <p>
-                                <p>Click on a country to see its trends by year.</p>
-                                <div>
-                                    Current year:
-                                    <a class="button is-danger is-inverted is-rounded">
-                                        <span id="year-val"></span>
-                                    </a>
-                                    <input type="range" step="1" id="year" style="margin-left: 10px">
-                                </div>
-                            </p>
-                            <p>
-                                Choose between total emissions or emissions per capita.
-                                <input type="radio" name="data-type" value="emissions" checked>
-                                <label>Emissions</label>
-                                <input type="radio" name="data-type" value="emissionsPerCapita">
-                                <label>Emissions Per Capita</label>
-                            </p>
-
-                        </div>
-
-                        <div class="tooltip"></div>
 
                     </div>
                 </div>
             </section>
-            <script src="./js/final/map.js"></script>
-            <script src="./js/final/pie.js"></script>
-            <script src="./js/final/bar.js"></script>
-            <script src="./js/final/app.js"></script>
+
 
 
             <!-- ABOUT SECTION - NOTES TO GRADER -->
@@ -160,7 +114,6 @@
                     </div>
                 </div>
             </div>
-
             <script>
                 function showAbout() {
                     var x = document.getElementById("About");
