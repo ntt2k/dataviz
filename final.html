@@ -16,8 +16,250 @@
     <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
     <link rel="stylesheet" type="text/css" href="css/nav.css">
-    <link rel="stylesheet" type="text/css" href="css/gdb.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/gdb.css"> -->
 
+    <style>
+        #content {
+            margin: 5px;
+            padding: 0px 0px 150px 0px;
+            width: 575px;
+            text-align: left;
+        }
+
+        #container {
+            padding: 15px;
+            border: 1px solid #ccc;
+            height: 550px;
+            clear: both;
+        }
+
+        #header h1 {
+            margin: 0px 0px 0px 10px;
+            padding: 4px 0px 0px 7px;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 18px;
+            font-weight: normal;
+            color: #fff;
+        }
+
+        p {
+            margin: 0px;
+            padding: 0px 0px 15px 0px;
+            color: #4a4a4a;
+            font-weight: normal;
+            line-height: 1.5rem;
+        }
+
+        p.body {
+            padding: 15px 0px 15px 0px;
+        }
+
+        #slides {
+            margin: 0px;
+            padding: 0px;
+            background: #fff;
+            height: 400px;
+            width: 300px;
+            float: right;
+        }
+
+        #slides p {
+            margin: 0px;
+            padding: 0px 0px 13px 0px;
+            color: #4a4a4a;
+            font-weight: normal;
+        }
+
+        g.y.axis path.domain {
+            stroke-width: 0px;
+        }
+
+        g.x.axis path.domain,
+        g.x.axis g.tick.major line,
+        g.x.axis g.tick line {
+            stroke: #333;
+            stroke-width: 1px;
+            shape-rendering: crispEdges;
+        }
+
+        .axis path,
+        .axis line {
+            fill: none;
+            shape-rendering: crispEdges;
+            border-width: 2px;
+        }
+
+        .axis line {
+            stroke: #eee;
+            stroke-width: 1;
+            shape-rendering: crispEdges;
+        }
+
+        g.group text,
+        g.tick text,
+        .x.axis text {
+            color: #4a4a4a;
+            font-size: 12px;
+        }
+
+        #buttons,
+        #countrybuttons {
+            margin: 0px 0px 0px 5px;
+            padding: 0px;
+        }
+
+        #countrybuttons {
+            margin: 5px 0px 0px 5px;
+            padding: 0px;
+        }
+
+        .button {
+            display: inline-block;
+            margin: 0px 0px 3px 0px;
+            padding: 4px 6px;
+            line-height: 20px;
+            background: #ff0000;
+            min-width: 70px;
+            border-radius: 3px;
+            text-align: center;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        #countrybuttons .button {
+            min-width: 0px;
+            background: #f4f4f4;
+            color: #747474;
+        }
+
+        #countrybuttons .selected {
+            background: #ff0000;
+            color: #fff;
+        }
+
+        .button:hover {
+            background: #e3120b;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .button span {
+            margin: 0px;
+            padding: 0px 3px;
+        }
+
+        #play {
+            float: left;
+        }
+
+        .regLine {
+            fill: none;
+            stroke: #00a1ce;
+            stroke-width: 2.5;
+            opacity: 0;
+        }
+
+        #header {
+            margin: 0px;
+            padding: 0px;
+            height: 34px;
+            background: #747474;
+        }
+
+        #block {
+            float: left;
+            margin: 0px;
+            padding: 0px;
+            height: 100%;
+            width: 10px;
+            background: #ff0000;
+        }
+
+        .left.label {
+            font-size: 16px;
+            fill: #4a4a4a;
+        }
+
+        .right.label {
+            font-size: 16px;
+            fill: #772210;
+        }
+
+        #source {
+            margin: 0px 0px 20px 0px;
+            padding: 0px;
+            font-size: 12px;
+        }
+
+        g.group text {
+            opacity: 0;
+        }
+
+        circle {
+            fill: #00a1ce;
+            stroke: #fff;
+            stroke-width: 1.5;
+        }
+
+        .scatter {
+            opacity: 0.6;
+        }
+
+        .timerCircle {
+            stroke: #ccc;
+            stroke-width: 2;
+            fill: #fff;
+        }
+
+        rect {
+            fill: #ccc;
+        }
+
+        #year {
+            font-family: 'Droid Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color: #4a4a4a;
+            font-weight: bold;
+        }
+
+        div.tooltip {
+            position: absolute;
+            pointer-events: none;
+            margin: 0px;
+            padding: 7px;
+            width: 255px;
+            height: 110px;
+            background: #fff;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            opacity: 0;
+        }
+
+        div.tooltip p {
+            margin: 0px;
+            padding: 0px;
+            line-height: 1.2rem;
+            color: #4a4a4a;
+            text-align: left;
+        }
+
+        .legend circle {
+            fill: none;
+            stroke: #ccc;
+            stroke-width: 1;
+        }
+
+        .legend text {
+            fill: #747474;
+            font: 10px Arial, sans-serif;
+            text-anchor: middle;
+        }
+    </style>
 </head>
 
 <body>
@@ -77,12 +319,43 @@
                             odio, sollicitudin vel erat vel, interdum mattis neque. Sub
                             <sub>script</sub> works as well!</p>
 
-                        <p class="has-text-grey">(Please wait few seconds for D3.js to load data ...)</p>
+                        <p class="has-text-info">(Press play and click on circle for more info ...)</p>
+
+                        <h4 class="has-text-link">CO
+                            <sub>2</sub> emissions and GDP per capita</h4>
 
 
+                        <div id="buttons">
+                            <div class="button" id="play">Play
+                                <span class="fa fa-caret-right"></span>
+                            </div>
+                        </div>
+
+                        <div id="slider"></div>
+
+                        <div id="countrybuttons">
+                            <div class="button selected" id="africa">Africa</span>
+                            </div>
+                            <div class="button selected" id="asia">Asia</span>
+                            </div>
+                            <div class="button selected" id="europe">Europe</span>
+                            </div>
+                            <div class="button selected" id="latam">Latin America</span>
+                            </div>
+                            <div class="button selected" id="mena">MENA</span>
+                            </div>
+                            <div class="button selected" id="northamerica">North America</span>
+                            </div>
+                        </div>
+
+
+                        <div id="chart"></div>
+
+                        <p id="source">Source: World Bank, IMF</p>
                     </div>
                 </div>
             </section>
+            <script type="text/javascript" src="./js/final/chart.js"></script>
 
 
 
